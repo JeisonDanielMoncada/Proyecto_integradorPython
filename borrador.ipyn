@@ -1,0 +1,49 @@
+nom = input("Ingrese su nombre de jugador: ") 
+print("Bienvenido jugador ", nom)
+
+import readchar
+
+key = readchar.readkey()
+
+from readchar import readkey, key
+
+import os
+
+def convertir_laberinto(cadena):
+    # Convierte la cadena en una lista de caracteres
+    caracteres = list(cadena)
+
+    # Convierte la lista en una matriz
+    matriz = np.reshape(caracteres, (filas, columnas))
+
+    return matriz
+
+
+
+    def mostrar(mapa):
+    # join en cadenas
+    for fila in mapa:
+        linea = ""
+        for char in fila:
+            linea += char
+        print(linea)
+matriz = []
+for linea in lab.split("\n"):
+    matriz.append(list(linea))
+matriz[0][0] = "P"
+
+
+###
+ def conteo (n: int):
+    while True:
+        import os
+        k = readkey()
+        n=n+1
+        os.system('cls' if os.name=='nt' else 'clear')
+        print(n)
+        if k == "50":
+            os.system('cls' if os.name=='nt' else 'clear')
+            break
+
+conteo (0)
+###
