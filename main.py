@@ -55,7 +55,7 @@ posicion_inicial = [py , px]
 posicion_final= [20, 19]
 # def main_loop(matriz, posicion_inicial , posicion_final):  
 while True:
-      if (px, py) != posicion_final:
+      if [py, px]  != posicion_final:
         matriz[py][px]= "P"
         print(mostrar_matriz(matriz))
         k = readkey()
@@ -74,3 +74,5 @@ while True:
         elif matriz[py][px] == posicion_final:
           print("Felicidades has salido del laberinto")
           break
+      else :
+         break  
