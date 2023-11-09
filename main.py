@@ -1,12 +1,8 @@
-nom = input("Ingrese su nombre de jugador: ") 
-print("Bienvenido jugador ", nom)
+from main_functions import main_loop, string_to_matrix
+from class_juegoArchivo import JuegoArchivo
 
-import readchar
-import os
-
-key = readchar.readkey()
-
-from readchar import readkey, key
+name = input ('Ingrese su nombre de jugador: ') 
+print(f'{name}, bienvenido a este juego!!!')
 
 laberinto = """..###################
 ....#...#...........#
@@ -29,50 +25,14 @@ laberinto = """..###################
 #.#######.#####.###.#
 #...#.......#.....#.#
 ###################.#"""
-import os
 
-def conver_matriz (laberinto):
-    matriz = []
-    for linea in laberinto.split("\n"):
-        matriz.append(list(linea))
-    return matriz
-matriz = conver_matriz(laberinto)
+mapa = string_to_matrix(laberinto)
 
-def mostrar_matriz(matriz):
-    os.system('cls' if os.name == 'nt' else 'clear')
-    for laberinto in matriz:
-        print(' '.join([str(elem) for elem in laberinto]))
+def main():
+    main_loop(mapa, (0, 0), (11, 12))
+    path_a_mapas = 'Mapas'  # Reemplaza esto con la ubicación de tus mapas
+    juego = JuegoArchivo(path_a_mapas)
+    juego.main_loop()
 
-# filas = matriz
-# coordenadas = []
-# for i, fila in enumerate(filas):
-#     for j, caracter in enumerate(fila):
-#         if caracter == "#":
-#             coordenadas.append((i, j))
-# coordenadas = tuple(coordenadas)
-py , px = (0 , 0)
-posicion_inicial = [py , px]
-posicion_final= [20, 19]
-# def main_loop(matriz, posicion_inicial , posicion_final):  
-while True:
-      if [py, px]  != posicion_final:
-        matriz[py][px]= "P"
-        print(mostrar_matriz(matriz))
-        k = readkey()
-        if k == key.RIGHT and px + 1 < len(matriz) and matriz[py][px + 1] != "#" :
-            matriz[py][px] = "."
-            py , px = (py, (px+1))
-        elif k == key.LEFT and px - 1 < len(matriz) and matriz[py][px - 1] != "#" :
-          matriz[py][px] = "."
-          py , px = ((py), (px-1)) 
-        elif k == key.DOWN and py + 1 < len(matriz) and matriz[py + 1][px] != "#" :  
-          matriz[py][px] = "."
-          py , px = ((py+1), (px))  
-        elif k == key.UP and py - 1 >= 0 and matriz[py - 1][px] != "#" :
-          matriz[py][px] = "."
-          py , px = ((py-1), (px))       
-        elif matriz[py][px] == posicion_final:
-          print("Felicidades has salido del laberinto")
-          break
-      else :
-         break  
+if __name__ == "__main__":
+    main()
